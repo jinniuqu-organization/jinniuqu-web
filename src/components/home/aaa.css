@@ -1,0 +1,46 @@
+
+
+/* 边框 */
+
+
+
+/* 四角 */
+.lt {
+  	width: 2.4%;
+  	height: 12.2%;
+  	background: url(../../assets/zuoshang.png) no-repeat;
+  	background-size: 100% 100%;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  }
+
+  .lb {
+  	width: 2.4%;
+  	height: 12.2%;
+  	background: url(../../assets/zuoxia.png) no-repeat;
+  	background-size: 100% 100%;
+  	position: absolute;
+  	bottom: 0;
+  	left: 0;
+  }
+
+  .rt {
+  	width: 2.4%;
+  	height: 12.2%;
+  	background: url(../../assets/youshang.png) no-repeat;
+  	background-size: 100% 100%;
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  }
+
+  .rb {
+  	width: 2.4%;
+  	height: 12.2%;
+  	background: url(../../assets/youxia.png) no-repeat;
+  	background-size: 100% 100%;
+  	position: absolute;
+  	bottom: 0;
+  	right: 0;
+  }

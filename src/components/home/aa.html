@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 德胜街道 -->
+		<div class="infoBox desheng" @click="showMsg('desheng')">
+			<div class="street">德胜街道<span class="num">{{real}}</span>个</div>
+		</div>
+		<div class="desheng_img" @click="showMsg('desheng')">
+		</div>
+		
+		<!-- 什刹海街道 -->
+		<div class="infoBox shichahai" @click="toShiChaHai">
+		  <div class="street">什刹海街道<span class="num">{{real}}</span>个</div>
+		</div>
+		<div class="shichahai_img" @click="toShiChaHai"></div>
+		
+		<!-- 新街口街道 -->
+		<div class="infoBox xinjiekou" @click="toXinJieKou">
+			<div class="street">新街口街道<span class="num">{{xinjiekouObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="xinjiekou_img" @click="toXinJieKou"></div>
+		
+		<!-- 西长安街道 -->
+		<div class="infoBox xichangan" @click="toXiChangAn">
+			<div class="street">西长安街道<span class="num">{{xichanganObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="xichangan_img" @click="toXiChangAn"></div>
+		
+		<div class="infoBox xichangan" @click="toXiChangAn">
+		  <div class="street">西长安街道<span class="num">{{xichanganObj.steetEquipmentTotal}}</span>个</div>
+		  <div class="onoffInfo_y">
+		    <div class="box">在线：<span class="num">{{xichanganObj.onLine}}</span>个</div>
+		    <div class="box">离线：<span class="num">{{xichanganObj.offLine}}</span>个</div>
+		    <div class="box">在线率：<span class="num">{{xichanganObj.onLineRank|per}}</span></div>
+		  </div>
+		</div>
+		<div class="xichangan_img" @click="toXiChangAn"></div>
+		
+		//西长安街街道
+		.xichangan {
+		  left: 55%;
+		  top: 45%;
+		}
+		
+		.xichangan_img {
+		  position: absolute;
+		  left: 53.18%;
+		  top: 42.5%;
+		  width: 13.94%;
+		  height: 16.01%;
+		}
+		
+		.xichangan:hover~.xichangan_img {
+		  cursor: pointer;
+		  background: url("../../../assets/img/xichangan.png") no-repeat;
+		  background-size: 100% 100%;
+		}
+		
+		.xichangan_img:hover {
+		  cursor: pointer;
+		  background: url("../../../assets/img/xichangan.png") no-repeat;
+		  background-size: 100% 100%;
+		}
+		
+		
+		
+		<!-- 展览路街道 -->
+		<div class="infoBox zhanlanlu" @click="toZhanLanLu">
+			<div class="street">展览路街道<span class="num">{{zhanlanluObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="zhanlanlu_img" @click="toZhanLanLu"></div>
+		
+		<!-- 金融街道 -->
+		<div class="infoBox jinrongjie" @click="toJinRongJie">
+			<div class="street">金融街街道<span class="num">{{jinrongjieObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="jinrongjie_img" @click="toJinRongJie"></div>
+		
+		<!-- 月坛街道 -->
+		<div class="infoBox yuetanjie" @click="toYueTanJie">
+		  <div class="street">月坛街道<span class="num">{{yuetanObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="yuetanjie_img" @click="toYueTanJie"></div>
+		
+		<!-- 广外街街道 -->
+		<div class="infoBox guangwaijie" @click="toGuangWaiJie">
+		  <div class="street">广外街道<span class="num">{{guangwaiObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="guangwaijie_img" @click="toGuangWaiJie"></div>
+		
+		<!-- 白纸坊街道 -->
+		<div class="infoBox baizhifang" @click="toBaiZhiFang">
+		  <div class="street">白纸坊街道<span class="num">{{baizhifangObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="baizhifang_img" @click="toBaiZhiFang"></div>
+		
+		<!-- 椿树街道 -->
+		<div class="infoBox chunshu" @click="toChunShu">
+		  <div class="street">椿树街道<span class="num">{{chunshuObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="chunshu_img" @click="toChunShu"></div>
+		
+		<!-- 大栅栏街道 -->
+		<div class="infoBox dashilan" @click="toDaShiLan">
+		  <div class="street">大栅栏街道<span class="num">{{dashilanObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="dashilan_img" @click="toDaShiLan"></div>
+		
+		<!-- 牛街街道 -->
+		<div class="infoBox niujie" @click="toGuangNeiJie">
+		  <div class="street">广内街道<span class="num">{{guangneiObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="niujie_img" @click="toGuangNeiJie"></div>
+		
+		<!-- 广内街街道 -->
+		<div class="infoBox guangneijie" @click="toNiuJie">
+		  <div class="street">牛街街道<span class="num">{{niujieObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="guangneijie_img" @click="toNiuJie"></div>
+		
+		<!-- 陶然亭街道 -->
+		<div class="infoBox taoranting" @click="toTaoRanTing">
+		  <div class="street">陶然亭街道<span class="num">{{taorantingObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="taoranting_img" @click="toTaoRanTing"></div>
+		
+		<!-- 天桥街道 -->
+		<div class="infoBox tianqiao" @click="toTianQiao">
+		  <div class="street">天桥街道<span class="num">{{tianqiaoObj.steetEquipmentTotal}}</span>个</div>
+		</div>
+		<div class="tianqiao_img" @click="toTianQiao"></div>
+	</body>
+</html>

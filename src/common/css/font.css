@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "SOURCEHANSANSCN-MEDIUM";
+  src:url(../font/SOURCEHANSANSCN-MEDIUM.otf);
+}
+
+@font-face {
+  font-family: "SOURCEHANSANSCN-REGULAR";
+  src:url(../font/SOURCEHANSANSCN-REGULAR.otf);
+}
+
+@font-face {
+  font-family: "Digital-7Mono";
+  src:url(../font/digital-7.ttf);
+}
+
+@font-face {
+  font-family: 'REEJI-PangBo-GB';
+  src:url('../font/REEJI-PangBo-GB.ttf');
+}
+
+@font-face {
+  font-family: 'AdobeHeitiStd-Regular';
+  src:url('../font/AdobeHeitiStd-Regular.otf');
+}
+
+@font-face{
+  font-family: "abc";
+  src:url(../font/abc.otf);
+}
