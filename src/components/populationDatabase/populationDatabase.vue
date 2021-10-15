@@ -260,7 +260,7 @@
     width: 100%;
     height: 100%;
     padding: 0 2% 2% 2%;
-    margin-top: 0.5%;
+    margin-top: 2%;
     background-size: 100% 100%;
     font-family: SOURCEHANSANSCN-REGULAR;
 
