@@ -1364,8 +1364,8 @@
         },
         // username: '7f8a7e16717038045bde322a743fb2dd',
         // password: 'b2655a87fbc1cb6bbe171bb4985f6ff9',
-        username: 't244q08520.zicp.vip:39256',
-        password: 't244q08520.zicp.vip:39256',
+        username: '21232f297a57a5a743894a0e4a801fc3',
+        password: '21232f297a57a5a743894a0e4a801fc3',
 				//折线颜色数组
 				lineColor: ["#015bff", "#ffab05", "#09ce0b", "#015bff", "#ffab05", "#09ce0b", "#015bff", "#ffab05", "#09ce0b",
 					"#015bff", "#ffab05"
