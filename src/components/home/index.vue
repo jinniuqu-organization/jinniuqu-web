@@ -5,32 +5,40 @@
       <!-- 头部 -->
       <div class="tit">
         <div class="tit_box" @click="navTo(0)">
-          <div class="tit_word">西城区大数据治理</div>
+          <div class="tit_word">金牛区大数据治理</div>
         </div>
       </div>
 
       <!-- 导航 -->
       <div class="nav">
         <div class="nav_left">
-          <div :class="navIndex==1?'nav_active':'nav_box'" @click="navTo(1)">
-            <div class="nav_word">治理服务监控</div>
-          </div>
           <div :class="navIndex==2?'nav_active':'nav_box'" @click="navTo(2)">
             <div class="nav_word">数据汇集监控</div>
           </div>
           <div :class="navIndex==3?'nav_active':'nav_box'" @click="navTo(3)">
             <div class="nav_word">数据运行监控</div>
           </div>
+          <div :class="navIndex==1?'nav_active':'nav_box'" @click="navTo(1)">
+          <div class="nav_word">治理服务监控</div>
+          </div>
         </div>
         <div class="nav_right">
-          <div :class="navIndex==4?'nav_active':'nav_box'" @click="navTo(4)">
+          <!-- <div :class="navIndex==4?'nav_active':'nav_box'" @click="navTo(4)">
             <div class="nav_word">数据标准管理</div>
           </div>
           <div :class="navIndex==5?'nav_active':'nav_box'" @click="navTo(5)">
             <div class="nav_word">治理组织架构</div>
           </div>
           <div :class="navIndex==6?'nav_active':'nav_box'" @click="navTo(6)">
-            <div class="nav_word">数据治理服务</div>
+            <div class="nav_word">数据治理服务</div> -->
+          <div :class="navIndex==4?'nav_active':'nav_box'" @click="navTo(4)">
+            <div class="nav_word">人口库查询</div>
+          </div>
+          <div :class="navIndex==5?'nav_active':'nav_box'" @click="navTo(5)">
+            <div class="nav_word">法人库查询</div>
+          </div>
+          <div :class="navIndex==6?'nav_active':'nav_box'" @click="navTo(6)">
+            <div class="nav_word">地理信息库查询</div>
           </div>
         </div>
       </div>
@@ -38,15 +46,18 @@
     <!-- 内容展示 （选项卡模式）-->
     <div class="content">
       <GovernanceServices v-if="navIndex==1"></GovernanceServices><!-- 治理服务监控 -->
-      <HomeMain v-if="navIndex==5"></HomeMain> <!-- 治理组织架构 -->
+      <!-- <HomeMain v-if="navIndex==5"></HomeMain> --> <!-- 治理组织架构 -->
       <DataCollection v-if="navIndex==2"></DataCollection><!-- 数据汇集监控 -->
       <!--<DataQuality v-if="navIndex==1"></DataQuality>&lt;!&ndash; 数据质量监控 &ndash;&gt;-->
-      <DataStandardManagement v-if="navIndex==4"></DataStandardManagement> <!-- 数据标准管理 -->
+      <!-- <DataStandardManagement v-if="navIndex==4"></DataStandardManagement> --> <!-- 数据标准管理 -->
       <DataGovernance v-if="navIndex==6"></DataGovernance> <!-- 数据治理服务 -->
       <DataOperation v-if="navIndex==3"></DataOperation> <!-- 数据运行监控 -->
       <NewMain v-if="navIndex==0"></NewMain> <!-- 页面默认显示 -->
       <DrawPortray v-if="navIndex==7"></DrawPortray>
 	  <!-- <DataGovernanceTools v-if="navIndex==0"></DataGovernanceTools> <!-- 页面默认显示 -->
+      <PopulationDatabase v-if="navIndex==4"></PopulationDatabase>
+      <CorporateDatabase v-if="navIndex==5"></CorporateDatabase>
+      <!-- <HomeMain v-if="navIndex==6"></HomeMain> -->
     </div>
   </div>
 </template>
@@ -69,9 +80,12 @@
     import DataOperation from '../dataOperation/index.vue'
     //数据治理工具
     import DataGovernanceTools from '../dataGovernanceTools/index.vue'
-
     //治理服务监控
     import GovernanceServices from '../governanceServices/governanceServices'
+    //人口库查询
+    import PopulationDatabase from '../populationDatabase/populationDatabase'
+    //法人库查询
+    import CorporateDatabase from '../corporateDatabase/corporateDatabase'
 
     export default {
         data() {
@@ -99,8 +113,11 @@
           DataGovernanceTools,
           DrawPortray,
           //治理服务监控
-          GovernanceServices
-
+          GovernanceServices,
+          //人口库查询
+          PopulationDatabase,
+          //法人库查询
+          CorporateDatabase,
         },
         mounted(){
           let vm = this;
@@ -161,10 +178,10 @@
           .tit_word {
             font-size:2.2rem;
             font-family:SOURCEHANSANSCN-MEDIUM;
-            background: linear-gradient(0deg, rgba(254, 255, 244, 1) 0%, rgba(217, 183, 140, 1) 98.92578125%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight:bold;
+            // background: linear-gradient(0deg, rgba(254, 255, 244, 1) 0%, rgba(217, 183, 140, 1) 98.92578125%);
+            // -webkit-background-clip: text;
+            // -webkit-text-fill-color: transparent;
+            // font-weight:bold;
             color: rgba(255, 255, 255, 1);
           }
         }
