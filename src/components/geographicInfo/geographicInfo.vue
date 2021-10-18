@@ -11,8 +11,11 @@
                    :popper-append-to-body="false"
                    @change="getMasterInfos"
         >
-          <el-option label="身份证号" value="1"></el-option>
-         <!-- <el-option label="统一社会信用代码" value="2"></el-option> -->
+          <el-option label="行政区划" value="1"></el-option>
+         <el-option label="城乡社区基本信息" value="2"></el-option>
+         <el-option label="环卫公厕信息" value="3"></el-option>
+         <el-option label="公园信息" value="4"></el-option>
+         <el-option label="持续建设中…" value="5"></el-option>
         </el-select>
         <el-button slot="append" icon="el-icon-search" @click="getMasterInfos"></el-button>
       </el-input>
@@ -51,14 +54,6 @@
           :prop="selectType === '1' ? 'sex': 'regAddress'"
           :label="selectType === '1' ? '性别' : '注册地址'"
           :width="selectType === '1' ? '120':''"
-          align="left"
-          show-overflow-tooltip
-        >
-        </el-table-column>
-        <el-table-column
-          prop="domicile"
-          label="户籍类型"
-          width="120"
           align="left"
           show-overflow-tooltip
         >
@@ -148,7 +143,7 @@
     },
 
     mounted(){
-      // this.getMasterInfos();
+      this.getMasterInfos();
     },
 
     methods: {

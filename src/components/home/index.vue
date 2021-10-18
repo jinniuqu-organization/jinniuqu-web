@@ -84,12 +84,13 @@
     //数据治理工具
     import DataGovernanceTools from '../dataGovernanceTools/index.vue'
     //治理服务监控
-    import GovernanceServices from '../governanceServices/governanceServices'
+    import GovernanceServices from '../governanceServices/governanceServices.vue'
     //人口库查询
-    import PopulationDatabase from '../populationDatabase/populationDatabase'
+    import PopulationDatabase from '../populationDatabase/populationDatabase.vue'
     //法人库查询
-    import CorporateDatabase from '../corporateDatabase/corporateDatabase'
+    import CorporateDatabase from '../corporateDatabase/corporateDatabase.vue'
     //地理信息库查询
+    import GeographicInfo from '../geographicInfo/geographicInfo.vue'
 
     export default {
         data() {
@@ -124,7 +125,7 @@
           //法人库查询
           CorporateDatabase,
           //地理信息库查询
-          // GeographicInfo
+          GeographicInfo,
         },
         mounted(){
           let vm = this;
