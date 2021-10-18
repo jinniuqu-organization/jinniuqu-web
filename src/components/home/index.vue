@@ -45,19 +45,20 @@
     </div>
     <!-- 内容展示 （选项卡模式）-->
     <div class="content">
-      <GovernanceServices v-if="navIndex==1"></GovernanceServices><!-- 治理服务监控 -->
+      <!-- <GovernanceServices v-if="navIndex==1"></GovernanceServices> --><!-- 旧/治理服务监控 -->
+       <ManageServiceMonitor v-if="navIndex==1"></ManageServiceMonitor>  <!-- 治理服务监控 -->
       <!-- <HomeMain v-if="navIndex==5"></HomeMain> --> <!-- 治理组织架构 -->
       <DataCollection v-if="navIndex==2"></DataCollection><!-- 数据汇集监控 -->
       <!--<DataQuality v-if="navIndex==1"></DataQuality>&lt;!&ndash; 数据质量监控 &ndash;&gt;-->
       <!-- <DataStandardManagement v-if="navIndex==4"></DataStandardManagement> --> <!-- 数据标准管理 -->
-      <DataGovernance v-if="navIndex==6"></DataGovernance> <!-- 数据治理服务 -->
+      <!-- <DataGovernance v-if="navIndex==6"></DataGovernance> --> <!-- 数据治理服务 -->
       <DataOperation v-if="navIndex==3"></DataOperation> <!-- 数据运行监控 -->
       <NewMain v-if="navIndex==0"></NewMain> <!-- 页面默认显示 -->
       <DrawPortray v-if="navIndex==7"></DrawPortray>
 	  <!-- <DataGovernanceTools v-if="navIndex==0"></DataGovernanceTools> <!-- 页面默认显示 -->
       <PopulationDatabase v-if="navIndex==4"></PopulationDatabase>
       <CorporateDatabase v-if="navIndex==5"></CorporateDatabase>
-      <!-- <HomeMain v-if="navIndex==6"></HomeMain> -->
+      <GeographicInfo v-if="navIndex==6"></GeographicInfo>
     </div>
   </div>
 </template>
@@ -75,7 +76,9 @@
     //数据运行监控02
     import MonitoringTwo from '../dataOperation/dataOperationMonitoringTwo.vue'
     //数据治理服务
-    import DataGovernance from '../dataGovernance/dataGovernance.vue'
+    // import DataGovernance from '../dataGovernance/dataGovernance.vue'
+     import ManageServiceMonitor from '../manageServiceMonitor/manageServiceMonitor.vue'
+
     //数据运行监控
     import DataOperation from '../dataOperation/index.vue'
     //数据治理工具
@@ -86,6 +89,7 @@
     import PopulationDatabase from '../populationDatabase/populationDatabase'
     //法人库查询
     import CorporateDatabase from '../corporateDatabase/corporateDatabase'
+    //地理信息库查询
 
     export default {
         data() {
@@ -106,7 +110,8 @@
           //数据标准管理
           DataStandardManagement,
           // 数据治理服务
-          DataGovernance,
+          // DataGovernance,
+          ManageServiceMonitor,
           // 数据运行监控
           DataOperation,
           // 数据治理工具
@@ -118,6 +123,8 @@
           PopulationDatabase,
           //法人库查询
           CorporateDatabase,
+          //地理信息库查询
+          // GeographicInfo
         },
         mounted(){
           let vm = this;
