@@ -48,7 +48,7 @@
         <!-- style="font-size:26px;" -->
         <div class="tiao"><span class="blue animated fadeIn" >{{ dtaCollision.amount }}</span><span>条</span></div>
       </div>
-      <div class="service">
+      <!-- <div class="service">
         <el-carousel direction="vertical" :autoplay="true" :interval="5000" @change="getUnitLine">
           <el-carousel-item v-for="(item,index) in unitInfo" :key="index">
             <div class="serviceItem">
@@ -100,7 +100,7 @@
             </div>
           </el-carousel-item>
         </el-carousel>
-      </div>
+      </div> -->
 
     </div>
     <!-- 移动的原点 -->
@@ -281,7 +281,7 @@
           }
         }
             this.baseLibrary = arr
-      
+
           }
         })
       },
@@ -514,6 +514,7 @@
   .monOne {
     position: fixed;
     top: 0%;
+    left: 10%;
     width: 100%;
     height: 100%;
     color: #fff;
@@ -998,7 +999,6 @@
       // 字体样式
     .tiao {
       font-size: 1.1rem;
-      
     }
       // 蓝色
       .blue {
@@ -1006,7 +1006,6 @@
         font-size: 1.5rem;
         font-family: Digital-7Mono;
         font-weight: 500;
-      
       }
 
       // 黄色
@@ -1100,7 +1099,6 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-     
 
       .el-dialog__title {
         font-size:1.875rem; // 设计稿原尺寸
