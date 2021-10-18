@@ -271,7 +271,6 @@
       text-align: center;
       .searchInput {
         width: 60%;
-        heigth: 100%;
         position: relative;
         /deep/  .el-input__inner{
           height: 3.5rem;
@@ -281,7 +280,7 @@
         }
         // 类型选择样式
         /deep/ .el-select .el-input__inner{
-          width: 10rem;
+          width: 11.5rem;
           font-size: 0.85rem;
         }
 
@@ -300,6 +299,7 @@
 
         /deep/ .detail .el-input-group__append, .el-input-group__prepend {
           width: 10.25rem;
+          // width: 11rem;
           border: 1px solid #04FCFF;
           border-right: none;
         }
