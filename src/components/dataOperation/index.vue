@@ -1,12 +1,12 @@
 <template>
 <div class="standard">
   <MonitoringOne  v-if="index == 1" key="1" />
-  <MonitoringTwo  v-if="index == 2" key="2"/>
-  <p class="tab">
+  <!-- <MonitoringTwo  v-if="index == 2" key="2"/> -->
+  <!-- <p class="tab">
     <span :class="index == 1 ? 'active':'noActive'" @click="navTo(1)">01</span>
     <span>/</span>
     <span :class="index == 2 ? 'active':'noActive'" @click="navTo(2)">02</span>
-  </p>
+  </p> -->
 </div>
 </template>
 

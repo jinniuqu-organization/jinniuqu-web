@@ -131,7 +131,7 @@
 
 <script>
   import footerTime from "../footerTime";
-  import {getCircle, verticalMoveCircle, levelMoveCircle, curveMoveCircle1, curveMoveCircle2, changeNumCircle1, changeNumCircle2} from "../../common/js/circleCanvas.js";
+  import {getCircle, verticalMoveCircle, levelMoveCircle, curveMoveCircle1, curveMoveCircle2, changeNumCircle1, changeNumCircle2,changeNumCircle3, changeNumCircle4} from "../../common/js/circleCanvas.js";
   import pdf from 'vue-pdf';
   import Vue from 'vue'
   import {
@@ -234,7 +234,7 @@
         let canvas9 = getCircle("canvas9", document.getElementById("canvas9").getAttribute("width")/2, document.getElementById("canvas7").getAttribute("height") - r);
         verticalMoveCircle(canvas9, "toUp");
         let canvas10 = getCircle("canvas10", r, document.getElementById("canvas10").getAttribute("height")/2.1);
-        changeNumCircle2(canvas10);
+        changeNumCircle3(canvas10);
         // levelMoveCircle(canvas10);
 
         window.addEventListener("resize",() => {
@@ -347,7 +347,6 @@
           let lineChartDom = document.getElementsByClassName("unitLine")[index];
           //重要：给元素设置宽度
           // let lineChartDom = document.getElementsByClassName("line")[0];
-          let lineChart = this.$echarts.init(lineChartDom);
 
           // lineChart.dispose();
           let option = {
@@ -434,8 +433,13 @@
               symbol:"none"
             }]
           };
-          lineChart.setOption(option, true);
-          lineChart.resize();
+           let lineChart=null
+          if (lineChartDom) {
+            lineChart = this.$echarts.init(lineChartDom);
+            lineChart.setOption(option, true);
+            lineChart.resize();
+          }
+
         }, 0)
 
       },
@@ -469,7 +473,6 @@
       // this.init();
       // 轮播和动画
       this.timer = setInterval(this.scrollAnimate, 3000);
-
       let r = 4;
       let canvas1 = getCircle("canvas1", r, document.getElementById("canvas1").getAttribute("height") - (r+2));
       curveMoveCircle1(canvas1);
@@ -495,8 +498,9 @@
       verticalMoveCircle(canvas8, "toUp");
       let canvas9 = getCircle("canvas9", document.getElementById("canvas9").getAttribute("width")/2, document.getElementById("canvas7").getAttribute("height") - r);
       verticalMoveCircle(canvas9, "toUp");
-      let canvas10 = getCircle("canvas10", r, document.getElementById("canvas10").getAttribute("height")/2.1);
-      changeNumCircle2(canvas10);
+      // let canvas10 = getCircle("canvas10", r, document.getElementById("canvas10").getAttribute("height")/2.1);
+      let canvas10 = getCircle("canvas10", r, document.getElementById("canvas10").getAttribute("height")/2);
+      changeNumCircle3(canvas10);
       // levelMoveCircle(canvas10);
 
       window.addEventListener("resize",() => {
