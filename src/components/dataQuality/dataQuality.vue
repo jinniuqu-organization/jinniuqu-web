@@ -883,7 +883,6 @@
 
       //地图位置-地图
       baiDuMap () {
-        debugger
         let map = new BMap.Map('allMap');
 
         let localSearch = new BMap.LocalSearch(map);

@@ -1,6 +1,5 @@
 let r = 4;
 export function getCircle(id, x, y) {
-    debugger
     var canvasDiv = document.getElementById(id);
     var width = canvasDiv.getAttribute("width"),
         height = canvasDiv.getAttribute("height");
@@ -259,7 +258,6 @@ export function changeNumCircle3(circle) {
     let b = { ctx: circle.ctx, x: circle.width * 0.46, y: circle.height / 2 },
         c = { ctx: circle.ctx, x: circle.width * 0.46, y: circle.height / 2 };
     // d = { ctx: circle.ctx, x: circle.width * 0.46, y: circle.height * 0.66 };
-    debugger
     setInterval(function() {
         if (circle.x < circle.width * 0.44) {
             circle.x += 2 * Math.PI;

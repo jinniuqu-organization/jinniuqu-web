@@ -726,9 +726,9 @@ export default{
         let firstdom = firstArr[index];
         let seconddom = secondArr[index + 1];
         let thirddom = thirdArr[index + 2];
-        let firstChart = this.$echarts.init(firstdom);
-        let secondChart = this.$echarts.init(seconddom);
-        let thirdChart = this.$echarts.init(thirddom);
+        let firstChart={}
+        let secondChart={}
+        let thirdChart={}
 
         let option1 = vm.option;
         option1.xAxis.data = vm.lineMonArr[index];
@@ -741,9 +741,10 @@ export default{
           offset: 1,
           color: vm.linearColor[0].bot
         }]);
-
-         firstChart.setOption(option1, true);
-
+        if (firstdom) {
+          firstChart = this.$echarts.init(firstdom);
+          firstChart.setOption(option1, true);
+        }
          let option2 = vm.option;
          option2.xAxis.data = vm.lineMonArr[index+1];
          option2.series[0].data = vm.lineValArr[index+1];
@@ -755,8 +756,10 @@ export default{
            offset: 1,
            color: vm.linearColor[1].bot
          }]);
-
-         secondChart.setOption(option2, true);
+        if (seconddom) {
+          secondChart = this.$echarts.init(seconddom);
+          secondChart.setOption(option2, true);
+        }
 
          let option3 = vm.option;
          option3.xAxis.data = vm.lineMonArr[index+2];
@@ -769,7 +772,11 @@ export default{
            offset: 1,
            color: vm.linearColor[2].bot
          }]);
-          thirdChart.setOption(option3, true);
+          if (thirddom) {
+            thirdChart = this.$echarts.init(thirddom);
+            thirdChart.setOption(option3, true);
+        }
+
 
         // setTimeout(function(){
          vm.$refs.first.setActiveItem(index);
