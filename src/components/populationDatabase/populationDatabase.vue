@@ -100,8 +100,8 @@
     <el-dialog :visible.sync="infoFlag"
                top="4.3%"
                show-close
-               :class="selectType == '1' ? 'masterData_info' : 'masterDataFa_info'"
-               :title="selectType == '1' ? '用户详细信息': '企业详细信息'"
+               class="masterData_info"
+               title="用户详细信息"
                :close-on-click-modal="false"
     >
       <table border rules="none">
@@ -148,86 +148,44 @@
     },
 
     mounted(){
-      // this.getMasterInfos();
+      this.getMasterInfos();
     },
 
     methods: {
       // 获取主数据查询-列表
       getMasterInfos() {
         let query = {
-          pageNum:this.currentPage
+          pageNum:this.currentPage,
+          type:this.selectType,
+          idcard:this.masterData,
         };
-        switch (this.selectType === '1') {
-          case true:
-            if (this.verify(1)) {
-              query.idcard = this.masterData;
-              getMasterPersons(query).then(res => {
-                if (res.code === 200) {
-                  this.total = res.data.total;
-                  this.masterTableData = res.data.list;
-                } else {
-                  this.total = 0;
-                  this.masterTableData = [];
-                }
-              });
-            } else {
-              this.$message.info("请输入正确的身份证号");
-            }
-            break;
-          case false:
-            if (this.verify(2)) {
-              query.uniScid = this.masterData;
-              getMasterLegals(query).then(res => {
-                if (res.code === 200) {
-                  this.total = res.data.total;
-                  this.masterTableData = res.data.list;
-                }
-              });
-            } else {
-              this.$message.info("请输入正确的统一社会信用代码");
-            }
-            break;
-          default:
-            break;
-        }
+        getMasterPersons(query).then(res => {
+          if (res.code === 200) {
+            this.total = res.data.total;
+            this.masterTableData = res.data.list;
+          } else {
+            this.total = 0;
+            this.masterTableData = [];
+          }
+        })
       },
 
       // 获取主数据详情数据
       getMasterDataInfo(val) {
-        switch (this.selectType === '1') {
-          case true:
-            getMasterPersonInfos({
-              idcard: val.idcard
-            }).then(res => {
-              if (res.code === 200) {
-                this.list = res.data;
-                this.openInfos();
-              }
-            });
-            break;
-          case false:
-            getMasterLegalInfos({
-              uniScid: val.uniScid
-            }).then(res => {
-              if (res.code === 200) {
-                this.list = res.data;
-                this.openInfos();
-              }
-            });
-            break;
-          default:
-            break;
-        }
+          getMasterPersonInfos({
+            idcard: val.idcard
+          }).then(res => {
+            if (res.code === 200) {
+              this.list = res.data;
+              this.openInfos();
+            }
+          });
       },
       // 处理数据，打开弹窗
       openInfos() {
         let vm = this;
         vm.showData = [...vm.list];
-        if (vm.selectType === '1') {
-          vm.showData = _.chunk(vm.showData, 5);
-        } else {
-          vm.showData = _.chunk(vm.showData, 5);
-        }
+        vm.showData = _.chunk(vm.showData, 5);
         vm.infoFlag = true;
       },
       // 分页切换
@@ -242,7 +200,7 @@
       },
 
       // 格式验证
-      verify(type) {
+/*       verify(type) {
         if (type === 1) {
           // 验证身份证号
           if (this.masterData !== '') {
@@ -250,16 +208,16 @@
           } else {
             return true;
           }
-        } else if (type === 2) {
+        }
+         else if (type === 2) {
           // 验证社会机构代码
           if (this.masterData !== '') {
             return testUnifyCode(this.masterData)
           } else {
             return true;
           }
-
         }
-      },
+      }, */
     }
   }
 </script>
