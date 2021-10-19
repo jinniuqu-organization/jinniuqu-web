@@ -12,7 +12,7 @@
                    @change="getMasterInfos"
         >
           <el-option label="身份证号" value="1"></el-option>
-         <!-- <el-option label="统一社会信用代码" value="2"></el-option> -->
+         <el-option label="姓名" value="2"></el-option>
         </el-select>
         <el-button slot="append" icon="el-icon-search" @click="getMasterInfos"></el-button>
       </el-input>
@@ -33,24 +33,24 @@
         </el-table-column>
         <!-- 根据环境不一样切换为idcard 或 idcard -->
         <el-table-column
-          :prop="selectType === '1' ? 'idcardjm' : 'uniScid'"
-          :label="selectType === '1' ? '公民身份证号码': '统一社会信用代码'"
+          prop="idcardjm"
+          label="公民身份证号码"
           align="left"
           width="220"
         >
         </el-table-column>
         <el-table-column
-          :prop="selectType === '1' ? 'name':'entName'"
-          :label="selectType === '1' ? '姓名': '机构名称'"
-          :width="selectType === '1' ? '120':''"
+          prop="name"
+          label="姓名"
+          width="120"
           align="left"
           show-overflow-tooltip
         >
         </el-table-column>
         <el-table-column
-          :prop="selectType === '1' ? 'sex': 'regAddress'"
-          :label="selectType === '1' ? '性别' : '注册地址'"
-          :width="selectType === '1' ? '120':''"
+          prop="sex"
+          label="性别"
+          width="120"
           align="left"
           show-overflow-tooltip
         >
@@ -64,23 +64,23 @@
         >
         </el-table-column>
         <el-table-column
-          :prop="selectType === '1' ? 'telephone':'legalRepresent'"
-          :label="selectType === '1' ? '联系电话' : '法定代表人'"
+          prop="telephone"
+          label="联系电话"
           width="200"
           show-overflow-tooltip
           align="left"
         >
         </el-table-column>
         <el-table-column
-          :prop="selectType === '1' ? 'presentAddress' : 'tel'"
-          :label="selectType === '1' ? '家庭住址' : '联系电话'"
+          prop="presentAddress"
+          label="家庭住址"
           align="left"
           show-overflow-tooltip
           >
         </el-table-column>
         <el-table-column
-          :prop="selectType === '1' ? 'rprAddress' : 'entState'"
-          :label="selectType === '1' ? '户籍登记地址' : '企业状态'"
+          prop="rprAddress"
+          label="户籍登记地址"
           align="left"
           show-overflow-tooltip
           >
@@ -154,8 +154,9 @@
     methods: {
       // 获取主数据查询-列表
       getMasterInfos() {
-        let query = {};
-        query.pageNum = this.currentPage;
+        let query = {
+          pageNum:this.currentPage
+        };
         switch (this.selectType === '1') {
           case true:
             if (this.verify(1)) {

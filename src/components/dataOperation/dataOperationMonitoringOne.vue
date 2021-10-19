@@ -115,7 +115,8 @@
       <canvas id="canvas7" :width="0.215 * width" :height="0.345 * height"></canvas>
       <canvas id="canvas8" :width="0.0125 * width" :height="0.0275 * height"></canvas>
       <canvas id="canvas9" :width="0.0125 * width" :height="0.0275 * height"></canvas>
-      <canvas id="canvas10" :width="0.095 * width" :height="0.2515 * height"></canvas>
+        <!-- <canvas id="canvas10" :width="0.095 * width" :height="0.2515 * height"></canvas> -->
+      <canvas id="canvas10" :width="0.095 * width" :height="0.498 * height"></canvas>
     </div>
     <!-- pdf 弹出框 -->
     <el-dialog :title="title" :visible.sync="dialogVisible" :append-to-body="true" class="pdf">
@@ -518,7 +519,7 @@
     width: 100%;
     height: 100%;
     color: #fff;
-    background: url(../../assets/dataOperation/jiankong01.png) no-repeat center;
+    background: url(../../assets/dataOperation/jiankong11.png) no-repeat center;
     background-size: 100% 100%;
 
       // 运行轨迹图 共四张 5秒一张
@@ -1076,7 +1077,8 @@
     }
     #canvas10{
       /*top: 50.65%;*/
-      top: 39.55%;
+      // top: 39.55%;
+      top: 26.60%;
       left: 51.75%;
     }
   }
