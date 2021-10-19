@@ -3,12 +3,12 @@
     <div class="brief_info">
       <el-row :gutter="8">
         <el-col :span="8" v-for="(item, index) in apis" :style="{ marginTop: (index > 2 ? '2.2rem': '1rem') }" v-bind:key="index">
-          <el-card class="box-card" shadow="always">
+          <el-card class="box-card" shadow="always"  v-if="item.apiName">
             <div slot="header" class="clearfix">
               <span>{{item.apiName}}</span>
               <span class="btn" type="text">{{item.apiCount}}</span>
             </div>
-            <div class="text item">
+            <div class="text item" >
               <span class="labelName">服务对象：</span>
               <span class="labelValue">{{ item.apiObject }}</span>
             </div>
@@ -26,6 +26,17 @@
               <span class="labelValue">{{ item.apiExplain }}</span>
             </div>
           </el-card>
+          <el-card class="box-card" shadow="always" v-else>
+            <div slot="header" class="clearfix">
+              <span>建设中……</span>
+              <span class="btn" type="text"></span>
+            </div>
+            <div class="item_blank" >
+              <div class="blank_img"></div>
+            </div>
+          </el-card>
+
+
         </el-col>
       </el-row>
     </div>
@@ -68,6 +79,20 @@
           if (res.code === 200) {
             vm.apis = res.data;
             // this.countTimer0 = setInterval(function () {
+              if (vm.apis.length<7&&vm.apis.length>0) {
+                let num=6-res.data.length
+                for (let i = 0; i < num; i++) {
+                   vm.apis.push({
+                      apiId:parseInt(Math.random()+i),
+                      apiName:"",
+                      apiState:"",
+                      apiMethod:"",
+                      apiExplain:"",
+                      apiCount:null,
+                      apiObject:""
+                  })
+                }
+              }
               vm.updateApiCount();
             // }, 5000)
           }
@@ -210,6 +235,16 @@
 
     .box-card {
       width: 560px;
+      .item_blank{
+        min-height: 14rem;
+        display: flex;
+        justify-content: center;
+        .blank_img{
+          background: url('../../assets/dataOperation/inConstruction.png') no-repeat;
+          background-size: 100% 100%;
+          width: 320px;
+        }
+      }
     }
 
     .apiInfo_dialog {
