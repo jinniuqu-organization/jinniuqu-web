@@ -11,108 +11,26 @@
                    :popper-append-to-body="false"
                    @change="getMasterInfos"
         >
-          <el-option label="行政区划" value="1"></el-option>
-         <el-option label="城乡社区基本信息" value="2"></el-option>
-         <el-option label="环卫公厕信息" value="3"></el-option>
-         <el-option label="公园信息" value="4"></el-option>
-         <el-option label="持续建设中…" value="5"></el-option>
+          <el-option  v-for="(item,index) in selectList" :key="index" :label="item.tableName" :value="item.id"></el-option>
         </el-select>
         <el-button slot="append" icon="el-icon-search" @click="getMasterInfos"></el-button>
       </el-input>
     </div>
     <div class="masterDataTable">
-      <el-table
-        :data="masterTableData"
-        :highlight-current-row="true"
-        @row-click="getMasterDataInfo"
-        ref="masterTable"
-        style="width: 100%">
-        <el-table-column
-          type="index"
-          label="序号"
-          :index="table_index"
-          align="center"
-          width="100">
-        </el-table-column>
-        <!-- 根据环境不一样切换为idcard 或 idcard -->
-        <el-table-column
-          :prop="selectType === '1' ? 'idcardjm' : 'uniScid'"
-          :label="selectType === '1' ? '公民身份证号码': '统一社会信用代码'"
-          align="left"
-          width="220"
-        >
-        </el-table-column>
-        <el-table-column
-          :prop="selectType === '1' ? 'name':'entName'"
-          :label="selectType === '1' ? '姓名': '机构名称'"
-          :width="selectType === '1' ? '120':''"
-          align="left"
-          show-overflow-tooltip
-        >
-        </el-table-column>
-        <el-table-column
-          :prop="selectType === '1' ? 'sex': 'regAddress'"
-          :label="selectType === '1' ? '性别' : '注册地址'"
-          :width="selectType === '1' ? '120':''"
-          align="left"
-          show-overflow-tooltip
-        >
-        </el-table-column>
-        <el-table-column
-          :prop="selectType === '1' ? 'telephone':'legalRepresent'"
-          :label="selectType === '1' ? '联系电话' : '法定代表人'"
-          width="200"
-          show-overflow-tooltip
-          align="left"
-        >
-        </el-table-column>
-        <el-table-column
-          :prop="selectType === '1' ? 'presentAddress' : 'tel'"
-          :label="selectType === '1' ? '家庭住址' : '联系电话'"
-          align="left"
-          show-overflow-tooltip
-          >
-        </el-table-column>
-        <el-table-column
-          :prop="selectType === '1' ? 'rprAddress' : 'entState'"
-          :label="selectType === '1' ? '户籍登记地址' : '企业状态'"
-          align="left"
-          show-overflow-tooltip
-          >
-        </el-table-column>
-      </el-table>
-    </div>
-    <div class="pageUtil">
-      <el-pagination
-        @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-size="pageSize"
-        layout="total, prev, pager, next, jumper"
-        :total="total">
-      </el-pagination>
-    </div>
-
-    <el-dialog :visible.sync="infoFlag"
-               top="4.3%"
-               show-close
-               :class="selectType == '1' ? 'masterData_info' : 'masterDataFa_info'"
-               :title="selectType == '1' ? '用户详细信息': '企业详细信息'"
-               :close-on-click-modal="false"
-    >
-      <table border rules="none">
-          <tr :class="index % 2 == 0 ? 'single': ''" align="center" v-for="(row,index) in showData" v-bind:key="index">
-            <template v-for="item in row">
+       <table border rules="none">
+          <tr :class="index % 2 == 0 ? 'single': ''" align="center" v-for="(item,index) in masterTableData" v-bind:key="index">
+            <!-- <template v-for="item in row"> -->
               <th data-toggle="tooltip" data-placement="top" :title="item.columnNote">{{item.columnNote}}&nbsp;&nbsp;</th>
               <td data-toggle="tooltip" data-placement="top" :title="item.value">{{item.value | nullFilter}}</td>
-            </template>
+            <!-- </template> -->
           </tr>
       </table>
-    </el-dialog>
+    </div>
   </div>
 </template>
 
 <script>
-  import {getMasterPersons, getMasterLegals, getMasterPersonInfos, getMasterLegalInfos} from '../../api/governanceIndex.js'
+  import {getMasterGeographicList,getMasterGeographicInfos} from '../../api/governanceIndex.js'
   import {
     testIdCard,
     testUnifyCode
@@ -121,108 +39,64 @@
     data() {
       return {
         // 类型选择
-        selectType: '1',
+        selectType: 1,
         // 主数据查询-搜索框
         masterData: '',
         masterTableData: [],
-
         // 详情页标识
         infoFlag: false,
         // 分页
         currentPage: 1,
         total: 0,
         pageSize: 10,
-
         list: [],
-
-        showData: []
+        showData: [],
+        selectList:[]
       }
     },
-    created() {
+    created () {
       this.getMasterInfos();
+      this.getGeographicList()
     },
 
     mounted(){
-      this.getMasterInfos();
+      // this.selectList=[
+      //   {tableName:"行政区划",id:"1"},
+      //   {tableName:"城乡社区基本信息",id:"2"},
+      //   {tableName:"环卫公厕信息",id:"3"},
+      //   {tableName:"公园信息",id:"4"},
+      //   {tableName:"持续建设中…",id:"5"},
+      // ]
     },
 
     methods: {
+      //获取搜索下拉列表
+      getGeographicList(){
+         getMasterGeographicList().then(res => {
+                if (res.code === 200) {
+                  this.selectList = res.data.list;
+                } else {
+                  this.selectList = [];
+                }
+              });
+      },
       // 获取主数据查询-列表
       getMasterInfos() {
-        let query = {};
-        query.pageNum = this.currentPage;
-        switch (this.selectType === '1') {
-          case true:
-            if (this.verify(1)) {
-              query.idcard = this.masterData;
-              getMasterPersons(query).then(res => {
-                if (res.code === 200) {
-                  this.total = res.data.total;
-                  this.masterTableData = res.data.list;
-                } else {
-                  this.total = 0;
-                  this.masterTableData = [];
-                }
-              });
-            } else {
-              this.$message.info("请输入正确的身份证号");
-            }
-            break;
-          case false:
-            if (this.verify(2)) {
-              query.uniScid = this.masterData;
-              getMasterLegals(query).then(res => {
-                if (res.code === 200) {
-                  this.total = res.data.total;
-                  this.masterTableData = res.data.list;
-                }
-              });
-            } else {
-              this.$message.info("请输入正确的统一社会信用代码");
-            }
-            break;
-          default:
-            break;
-        }
-      },
-
-      // 获取主数据详情数据
-      getMasterDataInfo(val) {
-        switch (this.selectType === '1') {
-          case true:
-            getMasterPersonInfos({
-              idcard: val.idcard
-            }).then(res => {
-              if (res.code === 200) {
-                this.list = res.data;
-                this.openInfos();
-              }
-            });
-            break;
-          case false:
-            getMasterLegalInfos({
-              uniScid: val.uniScid
-            }).then(res => {
-              if (res.code === 200) {
-                this.list = res.data;
-                this.openInfos();
-              }
-            });
-            break;
-          default:
-            break;
-        }
-      },
-      // 处理数据，打开弹窗
-      openInfos() {
-        let vm = this;
-        vm.showData = [...vm.list];
-        if (vm.selectType === '1') {
-          vm.showData = _.chunk(vm.showData, 5);
-        } else {
-          vm.showData = _.chunk(vm.showData, 5);
-        }
-        vm.infoFlag = true;
+        let query = {
+          // pageNum : this.currentPage,
+          // idcard : this.masterData,
+          id : this.selectType
+        };
+        getMasterGeographicInfos(query).then(res => {
+          if (res.code === 200) {
+            debugger
+            this.total = res.data.total;
+            this.masterTableData = res.data.list;
+          } else {
+            this.total = 0;
+            this.masterTableData = [];
+          }
+        });
       },
       // 分页切换
       handleCurrentChange(val) {
@@ -233,27 +107,7 @@
       // 分页序号连续
       table_index(index) {
         return (this.currentPage - 1) * this.pageSize + index + 1;
-      },
-
-      // 格式验证
-      verify(type) {
-        if (type === 1) {
-          // 验证身份证号
-          if (this.masterData !== '') {
-            return testIdCard(this.masterData)
-          } else {
-            return true;
-          }
-        } else if (type === 2) {
-          // 验证社会机构代码
-          if (this.masterData !== '') {
-            return testUnifyCode(this.masterData)
-          } else {
-            return true;
-          }
-
-        }
-      },
+      }
     }
   }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="masterDataQuery">
+  <div class="corporateDataQuery">
     <div class="masterDataSearch">
       <el-input placeholder="请输入内容"
                 v-model="masterData"
@@ -9,7 +9,6 @@
                    slot="prepend"
                    placeholder="请选择"
                    :popper-append-to-body="false"
-                   @change="getMasterInfos"
         >
           <el-option label="统一社会信用代码" value="1"></el-option>
           <el-option label="机构名称" value="2"></el-option>
@@ -23,7 +22,7 @@
       <el-table
         :data="masterTableData"
         :highlight-current-row="true"
-        @row-click="getMasterDataInfo"
+        @row-click="getLegalInfo"
         ref="masterTable"
         style="width: 100%">
         <el-table-column
@@ -66,8 +65,8 @@
         >
         </el-table-column>
         <el-table-column
-          prop=""
-          label="注册资金"
+          prop="registeredCapital"
+          label="注册资金(万/月)"
           width="200"
           show-overflow-tooltip
           align="left"
@@ -119,7 +118,7 @@
 </template>
 
 <script>
-  import {getMasterPersons, getMasterLegals, getMasterPersonInfos, getMasterLegalInfos} from '../../api/governanceIndex.js'
+  import { getMasterLegals, getMasterLegalInfos} from '../../api/governanceIndex.js'
   import {
     testIdCard,
     testUnifyCode
@@ -128,7 +127,7 @@
     data() {
       return {
         // 类型选择
-        selectType: '2',
+        selectType: '1',
         // 主数据查询-搜索框
         masterData: '',
         masterTableData: [],
@@ -139,9 +138,7 @@
         currentPage: 1,
         total: 0,
         pageSize: 10,
-
         list: [],
-
         showData: []
       }
     },
@@ -150,7 +147,7 @@
     },
 
     mounted(){
-      // this.getMasterInfos();
+      this.getMasterInfos();
     },
 
     methods: {
@@ -161,17 +158,19 @@
           type:this.selectType,
           uniScid:this.masterData
         };
-          getMasterLegals(query).then(res => {
-            if (res.code === 200) {
-              this.total = res.data.total;
-              this.masterTableData = res.data.list;
-            }
-          });
-        }
+        getMasterLegals(query).then(res => {
+          if (res.code === 200) {
+            this.total = res.data.total;
+            this.masterTableData = res.data.list;
+          }else{
+            this.total=0;
+            this.masterTableData = [];
+          }
+        });
       },
 
       // 获取主数据详情数据
-      getMasterDataInfo(val) {
+      getLegalInfo(val) {
             getMasterLegalInfos({
               uniScid: val.uniScid
             }).then(res => {
@@ -197,12 +196,13 @@
       // 分页序号连续
       table_index(index) {
         return (this.currentPage - 1) * this.pageSize + index + 1;
-      }
+      },
+    }
   }
 </script>
 
 <style lang="less" scoped="scoped">
-  .masterDataQuery {
+  .corporateDataQuery {
     width: 100%;
     height: 100%;
     padding: 0 2% 2% 2%;

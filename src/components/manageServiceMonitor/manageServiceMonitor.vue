@@ -242,7 +242,7 @@
         .blank_img{
           background: url('../../assets/dataOperation/inConstruction.png') no-repeat;
           background-size: 100% 100%;
-          width: 320px;
+          width: 32rem;
         }
       }
     }

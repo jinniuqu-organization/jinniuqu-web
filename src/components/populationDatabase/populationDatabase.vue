@@ -9,7 +9,6 @@
                    slot="prepend"
                    placeholder="请选择"
                    :popper-append-to-body="false"
-                   @change="getMasterInfos"
         >
           <el-option label="身份证号" value="1"></el-option>
          <el-option label="姓名" value="2"></el-option>
@@ -117,7 +116,7 @@
 </template>
 
 <script>
-  import {getMasterPersons, getMasterLegals, getMasterPersonInfos, getMasterLegalInfos} from '../../api/governanceIndex.js'
+  import {getMasterPersons, getMasterPersonInfos} from '../../api/governanceIndex.js'
   import {
     testIdCard,
     testUnifyCode
@@ -198,26 +197,6 @@
       table_index(index) {
         return (this.currentPage - 1) * this.pageSize + index + 1;
       },
-
-      // 格式验证
-/*       verify(type) {
-        if (type === 1) {
-          // 验证身份证号
-          if (this.masterData !== '') {
-            return testIdCard(this.masterData)
-          } else {
-            return true;
-          }
-        }
-         else if (type === 2) {
-          // 验证社会机构代码
-          if (this.masterData !== '') {
-            return testUnifyCode(this.masterData)
-          } else {
-            return true;
-          }
-        }
-      }, */
     }
   }
 </script>
@@ -373,7 +352,7 @@
       /deep/ .el-dialog {
         opacity: 1;
         width: 88%;
-        height: 85%;
+        height: 88%;
         background: url('../../assets/info3Back.png');
         background-size: 100% 100%;
       }
@@ -396,7 +375,7 @@
 
       table {
         width: 100%;
-        /*height: 100%;*/
+        // height: 100%;
         border: none;
         overflow: hidden;
         table-layout: fixed;
