@@ -17,14 +17,16 @@
       </el-input>
     </div>
     <div class="masterDataTable">
+      <div class="table_content">
        <table border rules="none">
           <tr :class="index % 2 == 0 ? 'single': ''" align="center" v-for="(item,index) in masterTableData" v-bind:key="index">
             <!-- <template v-for="item in row"> -->
-              <th data-toggle="tooltip" data-placement="top" :title="item.columnNote">{{item.columnNote}}&nbsp;&nbsp;</th>
-              <td data-toggle="tooltip" data-placement="top" :title="item.value">{{item.value | nullFilter}}</td>
+              <th data-toggle="tooltip" data-placement="top" :title="item.columnNote">{{item.table}}&nbsp;&nbsp;</th>
+              <td data-toggle="tooltip" data-placement="top" :title="item.value">{{item.table_name || ""}}</td>
             <!-- </template> -->
           </tr>
       </table>
+      </div>
     </div>
   </div>
 </template>
@@ -83,14 +85,10 @@
       // 获取主数据查询-列表
       getMasterInfos() {
         let query = {
-          // pageNum : this.currentPage,
-          // idcard : this.masterData,
           id : this.selectType
         };
         getMasterGeographicInfos(query).then(res => {
           if (res.code === 200) {
-            debugger
-            this.total = res.data.total;
             this.masterTableData = res.data.list;
           } else {
             this.total = 0;
@@ -128,7 +126,6 @@
       text-align: center;
       .searchInput {
         width: 60%;
-        heigth: 100%;
         position: relative;
         /deep/  .el-input__inner{
           height: 3.5rem;
@@ -176,38 +173,82 @@
   }
     //主数据展示区
     .masterDataTable {
-      margin-top: 1.2%;
-      /deep/  .el-table, .el-table__expanded-cell {
-        background-color: transparent;
-      }
-      /deep/ .el-table th {
-        background: rgba(22,150,255,0.06)!important;
-        font-size: 1.1875rem;
-        font-family: Source Han Sans CN;
-        font-weight: bolder;
-        color: #04FCFF;
-        border-bottom: 1px solid rgba(22,150,255,0.3);
-        border-top: 1px solid rgba(22,150,255,0.3);
-      }
-      /deep/ .el-table tr {
-        background-color: transparent;
-        height: 48px!important;
-      }
+      display: flex;
+      justify-content: center;
+      .table_content{
+        width: 60%;
+          table {
+            width: 100%;
+            // height: 100%;
+            border: 1px solid white;
+            overflow: hidden;
+            table-layout: fixed;
+            margin-top: 2%;
 
-      /deep/ .el-table tr:hover {
-        background-color: rgba(3, 10, 10, 0.6);
-      }
-      /deep/ .el-table--enable-row-transition .el-table__body td, .el-table .cell{
-        background-color: transparent;
-        font-size: 1rem;
-        font-family: Source Han Sans CN;
-        font-weight: 400;
-        color: #FFFFFF;
-        border-bottom: 1px dashed rgba(255,255,255,0.5) ;
-      }
-      /deep/ .el-table--small td, .el-table--small th {
-        padding: 6px 0;
-      }
+            tr {
+              font-size: 1.125rem;
+              th {
+                font-weight: bold;
+                color: #04FCFF;
+                padding-left: 0.6%;
+                width: 12%;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow: ellipsis;
+                text-align: center;
+              }
+
+              td {
+                height: 3.125rem;
+                font-weight: 500;
+                color: #FFFFFF;
+                width: 8%;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow: ellipsis;
+              }
+            }
+
+            .single {
+              background: url('../../assets/tiao.png');
+              background-size: 100% 100%;
+            }
+
+          }
+    }
+
+      // margin-top: 1.2%;
+      // /deep/  .el-table, .el-table__expanded-cell {
+      //   background-color: transparent;
+      // }
+      // /deep/ .el-table th {
+      //   background: rgba(22,150,255,0.06)!important;
+      //   font-size: 1.1875rem;
+      //   font-family: Source Han Sans CN;
+      //   font-weight: bolder;
+      //   color: #04FCFF;
+      //   border-bottom: 1px solid rgba(22,150,255,0.3);
+      //   border-top: 1px solid rgba(22,150,255,0.3);
+      // }
+      // /deep/ .el-table tr {
+      //   background-color: transparent;
+      //   height: 48px!important;
+      // }
+
+      // /deep/ .el-table tr:hover {
+      //   background-color: rgba(3, 10, 10, 0.6);
+      // }
+      // /deep/ .el-table--enable-row-transition .el-table__body td, .el-table .cell{
+      //   background-color: transparent;
+      //   font-size: 1rem;
+      //   font-family: Source Han Sans CN;
+      //   font-weight: 400;
+      //   color: #FFFFFF;
+      //   border-bottom: 1px dashed rgba(255,255,255,0.5) ;
+      // }
+      // /deep/ .el-table--small td, .el-table--small th {
+      //   padding: 6px 0;
+      // }
     }
     .el-table::before {//去除底部白线
       left: 0;

@@ -156,7 +156,7 @@
         let query = {
           pageNum:this.currentPage,
           type:this.selectType,
-          uniScid:this.masterData
+          parameter:this.masterData
         };
         getMasterLegals(query).then(res => {
           if (res.code === 200) {

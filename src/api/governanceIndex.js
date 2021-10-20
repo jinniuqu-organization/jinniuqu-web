@@ -113,8 +113,8 @@ export function getMasterGeographicList(query) {
 export function getMasterGeographicInfos(query) {
     return request({
         url: 'geographic/tableinfo',
-        method: 'get',
-        data: query.id,
+        method: 'post',
+        data: query,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

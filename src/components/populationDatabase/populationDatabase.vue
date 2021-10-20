@@ -156,7 +156,7 @@
         let query = {
           pageNum:this.currentPage,
           type:this.selectType,
-          idcard:this.masterData,
+          parameter:this.masterData,
         };
         getMasterPersons(query).then(res => {
           if (res.code === 200) {
