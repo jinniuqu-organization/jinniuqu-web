@@ -1098,7 +1098,7 @@
 							实有人口：
 						</span>
 						<span>
-							指实际居住在西城区辖区内的所有人口，限定于在西城区辖区内实际居住的人员，常住户口登记在西城区辖区但没有实际居住的
+							指实际居住在金牛区辖区内的所有人口，限定于在金牛区辖区内实际居住的人员，常住户口登记在金牛区辖区但没有实际居住的
 							人员不应登记为实有人口。军队、武警部队人员不作为实有人口登记。
 						</span>
 					</div>
@@ -1134,7 +1134,7 @@
 					<div>
 						<span class="keySpan">企业总量：</span>
 						<span align="center">
-							指西城区在一定时间内的企业总和，为存续、注吊销、迁出等所有企业数据的汇总统计。
+							指金牛区在一定时间内的企业总和，为存续、注吊销、迁出等所有企业数据的汇总统计。
 						</span>
 					</div>
 					<div>
@@ -1284,7 +1284,7 @@
      >
       <div style="margin-top: 5%">
         <!--用&nbsp;户&nbsp;登&nbsp;录-->
-        <span class="login_title">西城区大数据治理</span>
+        <span class="login_title">金牛区大数据治理</span>
       </div>
 
       <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">

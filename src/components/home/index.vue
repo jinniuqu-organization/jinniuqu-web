@@ -182,7 +182,7 @@
           align-items: center;
           cursor:pointer;
 		      z-index:2;
-          // 标题文字--西城区大数据治理
+          // 标题文字--金牛区大数据治理
           .tit_word {
             font-size:2.2rem;
             font-family:SOURCEHANSANSCN-MEDIUM;

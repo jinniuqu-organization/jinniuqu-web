@@ -3,7 +3,7 @@
     <div class="dataTotals">
       <div class="systemInfo">
         <label>
-          <p>西城区</p>
+          <p>金牛区</p>
           <p>大数据规范</p>
           <p class="num p_top"><span>{{item}}</span>大类</p>
           <p class="num"><span>{{amount}}</span>份</p>
