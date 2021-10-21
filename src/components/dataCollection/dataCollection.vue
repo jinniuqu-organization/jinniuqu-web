@@ -246,6 +246,57 @@
         </el-table-column>
       </el-table>
     </el-dialog>
+    <el-dialog
+      :visible.sync="loginFlag"
+      width="35%"
+      top="10%"
+      class="loginForm"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+      :show-close="false"
+      :modal-append-to-body="true"
+     >
+      <div style="margin-top: 5%">
+        <!--用&nbsp;户&nbsp;登&nbsp;录-->
+        <span class="login_title">金牛区大数据治理</span>
+      </div>
+
+      <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-form-item prop="username">
+          <el-input
+            v-model="ruleForm.username"
+            placeholder="请输入用户名"
+            autocomplete="off">
+            <i slot="prefix" style="display: flex;align-items: center;">
+              <img src="../../assets/icon-username.png"/>
+            </i>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="password" style="margin-top: 5%">
+          <el-input
+            type="password"
+            v-model="ruleForm.password"
+            placeholder="请输入密码"
+            autocomplete="off"
+            @keyup.enter.native="submitForm(ruleForm)"
+          >
+            <i slot="prefix" style="display: flex;align-items: center;">
+              <img src="../../assets/icon-pwd.png"/>
+            </i>
+          </el-input>
+        </el-form-item>
+        <el-form-item style="margin-left: -3%">
+          <el-button
+            style="background-color: #22ABFF"
+            @click="resetForm('ruleForm')">重&nbsp;&nbsp;&nbsp;&nbsp;置</el-button>
+          <el-button
+            type="primary"
+            style="margin-left: 3.1rem; background-color: #F8A717"
+            @click="submitForm(ruleForm)"
+          >提&nbsp;&nbsp;&nbsp;&nbsp;交</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
      <!-- 更新时间 -->
      <footerTime :isExplain="true" :screenId="2" />
   </div>
@@ -253,6 +304,7 @@
 
 <script>
 import footerTime from "../footerTime";
+ import md5 from 'js-md5';
 import {getCollectionInfo,getCollectionAll,getMonitorData,getUpdate,getDocList,getChart,getDocInfo} from "../../api/dataCollection.js";
 export default{
     components:{
@@ -393,7 +445,18 @@ export default{
           }]
         },
         // 数据归集情况
-        collectData: []
+        collectData: [],
+
+         // 登录标识
+			  loginFlag: false,
+        ruleForm: {
+          username: '',
+          password: ''
+        },
+        // username: '7f8a7e16717038045bde322a743fb2dd',
+        // password: 'b2655a87fbc1cb6bbe171bb4985f6ff9',
+        username: '21232f297a57a5a743894a0e4a801fc3',
+        password: '21232f297a57a5a743894a0e4a801fc3',
       }
     },
     created(){
@@ -409,6 +472,9 @@ export default{
       //获取矩形树图数据
       this.getChart();
     },
+    mounted() {
+		  this.checkLogin();
+		},
     updated(){
       if(this.flag){
         let vm = this;
@@ -420,6 +486,27 @@ export default{
 
     },
     methods:{
+      // 判断登录状态
+		  checkLogin() {
+		    if (sessionStorage.getItem("login")) {
+          this.loginFlag = false
+        } else {
+		      this.loginFlag = true
+        }
+      },
+		  // 用户登录判断
+      submitForm(formName) {
+        if (md5(this.ruleForm.username) === this.username && md5(this.ruleForm.password) === this.password) {
+          sessionStorage.setItem("login", true);
+          this.loginFlag = false
+        } else {
+          this.$message.error('用户名密码错误！请核对！');
+        }
+      },
+      // 登录重置
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
       //获取采集情况统计
       getCollectionInfo(){
          getCollectionInfo()
@@ -1632,6 +1719,90 @@ export default{
       /*padding: 6px 0;*/
     /*}*/
   }
+      // 登录弹框
+    .loginForm {
+      .demo-ruleForm {
+        margin-top: 5%;
+      }
+
+      /deep/ .el-dialog__title {
+        font-weight: bolder;
+        color: #ffffff;
+      }
+
+      /deep/ .el-dialog {
+        width: 679px;
+        height: 579px;
+        background: url(../../assets/login.png) no-repeat;
+        background-size: 100% 100%;
+      }
+
+      /deep/ .el-form-item__content {
+        margin-left: 0px;
+      }
+
+      /deep/ .el-input__inner {
+        background: url(../../assets/login_name.png) no-repeat;
+        background-size: 100% 100%;
+        border: none;
+        width: 29.6875rem;
+        height: 4.75rem;
+        margin-left: -5%;
+        font-size: 1.15rem;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: #FFFFFF;
+      }
+
+      /deep/ .el-input--prefix .el-input__inner {
+        padding-left: 4.375rem;
+      }
+
+      /deep/ .el-input__inner::placeholder {
+        color: #ffffff;
+      }
+      /* 谷歌 */
+      .detail .el-input__inner::-webkit-input-placeholder {
+        color: #ffffff;
+      }
+      /* 火狐 */
+      /deep/ .el-input__inner:-moz-placeholder {
+        color: #ffffff;
+      }
+      /*ie*/
+      /deep/ .el-input__inner:-ms-input-placeholder {
+        color: #ffffff;
+      }
+
+      /deep/ .el-button {
+        width: 12.625rem;
+        height: 4.0625rem;
+        border: none;
+        font-size: 1.475rem;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-shadow: 0px 1px 2px rgba(9, 16, 15, 0.35);
+        margin-top: 6%;
+      }
+
+
+      img {
+        width: 1.6875rem;
+        height: 1.875rem;
+        margin-top: 82%;
+        position: relative;
+      }
+
+      .login_title {
+        height: 3.0625rem;
+        font-size: 2.325rem;
+        font-family: AlibabaPuHuiTi;
+        font-weight: bold;
+        color: #FFFFFF;
+        margin-left: 25%;
+      }
+    }
 
 }
 </style>

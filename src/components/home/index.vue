@@ -4,7 +4,8 @@
     <div class="head">
       <!-- 头部 -->
       <div class="tit">
-        <div class="tit_box" @click="navTo(0)">
+        <!-- <div class="tit_box" @click="navTo(0)"> -->
+        <div class="tit_box">
           <div class="tit_word">金牛区大数据治理</div>
         </div>
       </div>
@@ -95,7 +96,7 @@
     export default {
         data() {
             return {
-                navIndex: 0,
+                navIndex: 2,
                 headMask:false
             }
         },
