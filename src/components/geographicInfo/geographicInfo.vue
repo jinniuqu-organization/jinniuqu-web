@@ -19,7 +19,11 @@
     <div class="masterDataTable">
       <div class="table_content">
        <table border rules="none">
-          <tr :class="index % 2 == 0 ? 'single': ''" align="center" v-for="(item,index) in masterTableData" v-bind:key="index">
+         <tr class="single" align="center">
+              <th data-toggle="tooltip" data-placement="top">表字段&nbsp;&nbsp;</th>
+              <td data-toggle="tooltip" data-placement="top">表字段名称</td>
+          </tr>
+          <tr :class="index % 2 == 0 ? '': 'single'" align="center" v-for="(item,index) in masterTableData" v-bind:key="index">
             <!-- <template v-for="item in row"> -->
               <th data-toggle="tooltip" data-placement="top" :title="item.columnNote">{{item.table}}&nbsp;&nbsp;</th>
               <td data-toggle="tooltip" data-placement="top" :title="item.value">{{item.table_name || ""}}</td>
@@ -115,7 +119,7 @@
     width: 100%;
     height: 100%;
     padding: 0 2% 2% 2%;
-    margin-top: 2%;
+    margin-top: 4%;
     background-size: 100% 100%;
     font-family: SOURCEHANSANSCN-REGULAR;
 
@@ -182,7 +186,7 @@
             border: 1px solid #0E2C64;
             overflow: hidden;
             table-layout: fixed;
-            margin-top: 2%;
+            margin-top: 4%;
 
             tr {
               font-size: 1.125rem;
