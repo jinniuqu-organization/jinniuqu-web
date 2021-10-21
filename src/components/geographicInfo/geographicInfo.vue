@@ -179,8 +179,7 @@
         width: 60%;
           table {
             width: 100%;
-            // height: 100%;
-            border: 1px solid white;
+            border: 1px solid #0E2C64;
             overflow: hidden;
             table-layout: fixed;
             margin-top: 2%;
