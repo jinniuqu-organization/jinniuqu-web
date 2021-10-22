@@ -66,7 +66,7 @@
         </el-table-column>
         <el-table-column
           prop="registeredCapital"
-          label="注册资金(万月)"
+          label="注册资金(万元)"
           width="200"
           show-overflow-tooltip
           align="left"

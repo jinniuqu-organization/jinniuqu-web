@@ -162,13 +162,15 @@
     .head {
       width: 100%;
       height: 13.9%;
-      padding-top: 1.98%;
+      // padding-top: 1.98%;
       position: relative;
       // 标题
       .tit {
-        width: 60.11%;
+        // width: 60.11%;
+        width: 100%;
         height: 60.17%;
-        background: url("../../assets/top.png") no-repeat;
+        // background: url("../../assets/top.png") no-repeat;
+        background: url("../../assets/top_background.png") no-repeat;
         background-size: 100% 100%;
         margin: 0 auto;
         display: flex;
@@ -204,6 +206,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
+        top: 60.5%;
         z-index: 99;
         display: flex;
         justify-content: space-between;
@@ -213,16 +216,19 @@
           height: 100%;
           display: flex;
           justify-content: space-between;
+          align-items: center;
+
           // 导航栏按钮默认状态和选中状态
           .nav_box, .nav_active {
-            width: 32.77%;
+            width: 30.77%;
             height: 100%;
-            background: url("../../assets/btn_zuokuang.png") no-repeat;
+            // background: url("../../assets/btn_zuokuang.png") no-repeat;
+            background: url("../../assets/btn_kuang.png") no-repeat;
             background-size: 100% 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-top: 1%;
+            // padding-top: 1%;
             .nav_word {
               font-size:1.375rem;
               color: rgba(255, 255, 255, 1);
@@ -234,7 +240,8 @@
           // 选中后背景图变化
           .nav_active {
             cursor: pointer;
-            background: url("../../assets/btn_zuokuangdianji.png") no-repeat;
+            // background: url("../../assets/btn_zuokuangdianji.png") no-repeat;
+            background: url("../../assets/btn_dianji.png") no-repeat;
             background-size: 100% 100%;
             // 选中后字体颜色变化
             & .nav_word {
@@ -246,7 +253,8 @@
           // 当鼠标滑过时,光标形态变化
           .nav_box:hover {
             cursor: pointer;
-            background: url("../../assets/btn_zuokuangdianji.png") no-repeat;
+            // background: url("../../assets/btn_zuokuangdianji.png") no-repeat;
+            background: url("../../assets/btn_dianji.png") no-repeat;
             background-size: 100% 100%;
             //颜色变化
             & .nav_word {
@@ -257,17 +265,20 @@
 
         .nav_right {
           .nav_box, .nav_active {
-            background: url("../../assets/btn_youkuang.png") no-repeat;
+            // background: url("../../assets/btn_youkuang.png") no-repeat;
+            background: url("../../assets/btn_kuang.png") no-repeat;
             background-size: 100% 100%;
           }
 
           .nav_active {
-            background: url("../../assets/btn_youkuangdianji.png") no-repeat;
+            // background: url("../../assets/btn_youkuangdianji.png") no-repeat;
+            background: url("../../assets/btn_dianji.png") no-repeat;
             background-size: 100% 100%;
           }
 
           .nav_box:hover {
-            background: url("../../assets/btn_youkuangdianji.png") no-repeat;
+            // background: url("../../assets/btn_youkuangdianji.png") no-repeat;
+            background: url("../../assets/btn_dianji.png") no-repeat;
             background-size: 100% 100%;
           }
         }

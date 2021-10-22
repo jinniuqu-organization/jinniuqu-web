@@ -1,8 +1,10 @@
 <template>
   <div class="interfaceService">
     <div class="brief_info">
-      <el-row :gutter="8">
-        <el-col :span="8" v-for="(item, index) in apis" :style="{ marginTop: (index > 2 ? '2.2rem': '1rem') }" v-bind:key="index">
+      <!-- <el-row :gutter="8"> -->
+      <el-row>
+        <!-- <el-col :span="8" v-for="(item, index) in apis" :style="{ marginTop: (index > 2 ? '2.2rem': '1rem') }" v-bind:key="index"> -->
+        <el-col :span="8" v-for="(item, index) in apis" :style="{ padding:'2rem'}" v-bind:key="index">
           <el-card class="box-card" shadow="always"  v-if="item.apiName">
             <div slot="header" class="clearfix">
               <span>{{item.apiName}}</span>
@@ -163,9 +165,12 @@
   .interfaceService {
     width: 100%;
     height: 100%;
-    padding: 0 2% 2% 2.8%;
+    // padding: 0 0 2% 3%;
+    padding: 0 3% 4%;
     margin-top: 2%;
     background-size: 100% 100%;
+    display: flex;
+    align-items: center;
     font-family: SOURCEHANSANSCN-REGULAR;
 
     // 卡片样式设置
@@ -234,7 +239,7 @@
     }
 
     .box-card {
-      width: 560px;
+      // width: 560px;
       .item_blank{
         min-height: 14rem;
         display: flex;
