@@ -206,7 +206,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        top: 60.5%;
+        top: 64%;
         z-index: 99;
         display: flex;
         justify-content: space-between;
