@@ -110,9 +110,21 @@ export function getMasterGeographicList(query) {
     })
 }
 // 获取地理信息查询列表
+// export function getMasterGeographicInfos(query) {
+//     return request({
+//         url: 'geographic/tableinfo',
+//         method: 'post',
+//         data: query,
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         }
+//     })
+// }
+// 获取地理信息查询列表
 export function getMasterGeographicInfos(query) {
     return request({
-        url: 'geographic/tableinfo',
+        url: 'geographic/tablesummaryname',
         method: 'post',
         data: query,
         headers: {
