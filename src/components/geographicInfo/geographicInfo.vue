@@ -86,7 +86,7 @@
         </el-table-column>
         <el-table-column
           prop="xCoordinate"
-          label="精度"
+          label="经度"
           align="left"
           show-overflow-tooltip
           >
