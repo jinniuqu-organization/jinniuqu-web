@@ -194,7 +194,7 @@
       :close-on-press-escape="false" :show-close="false" :modal-append-to-body="true">
       <div style="margin-top: 5%">
         <!--用&nbsp;户&nbsp;登&nbsp;录-->
-        <span class="login_title">金牛区大数据治理</span>
+        <span class="login_title">金牛区基础数据库平台</span>
       </div>
 
       <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">

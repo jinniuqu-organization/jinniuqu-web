@@ -15,7 +15,7 @@
         <el-table-column type="index" label="序号" :index="table_index" align="center" width="100">
         </el-table-column>
         <!-- 根据环境不一样切换为idcard 或 idcard -->
-        <el-table-column prop="idcardjm" label="公民身份证号码" align="left" width="220">
+        <el-table-column prop="idcard" label="公民身份证号码" align="left" width="220">
         </el-table-column>
         <el-table-column prop="name" label="姓名" width="120" align="left" show-overflow-tooltip>
         </el-table-column>
@@ -37,7 +37,7 @@
       </el-pagination>
     </div>
 
-    <el-dialog :visible.sync="infoFlag" top="4.3%" show-close class="masterData_info" title="用户详细信息"
+    <!-- <el-dialog :visible.sync="infoFlag" top="4.3%" show-close class="masterData_info" title="用户详细信息"
       :close-on-click-modal="true">
       <table border rules="none">
         <tr :class="index % 2 == 0 ? 'single': ''" align="center" v-for="(row,index) in showData" v-bind:key="index">
@@ -47,6 +47,129 @@
           </template>
         </tr>
       </table>
+    </el-dialog> -->
+    <el-dialog :visible.sync="infoFlag" top="4.3%" show-close class="masterData_info" title="用户详细信息"
+      :close-on-click-modal="true">
+      <div class="rows_header" align="center">基础信息 </div>
+      <table rules="none">
+        <tr class="single_tr">
+          <th data-toggle="tooltip" data-placement="top" title="姓名">姓名</th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['name_real']" colspan="5" scope="col">
+            {{this.showData["name_real"]}}</td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="性别">性别</th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['sex']">{{this.showData["sex"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="联系电话">联系电话</th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['tel_real']">{{this.showData["tel_real"]}}
+          </td>
+          <th data-toggle="tooltip" data-placement="top" title="出生日期">出生日期 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['birthdate']">{{this.showData["birthdate"]}}
+          </td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="民族">民族 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['ethnic_group']">
+            {{this.showData["ethnic_group"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="婚姻状况">婚姻状况 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['marriage_type']">
+            {{this.showData["marriage_type"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="户籍类型">户籍类型 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['domicile']">{{this.showData["domicile"]}}
+          </td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="公民身份证号码">公民身份证号码 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['idcard_real']" colspan="5" scope="col">
+            {{this.showData["idcard_real"]}}</td>
+        </tr>
+      </table>
+      <div class="rows_header">居住地址信息</div>
+      <table rules="none">
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="居住地-省(自治区、直辖市)">居住地-省(自治区、直辖市) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_province']">
+            {{this.showData["present_province"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="居住地-市(地区)">居住地-市(地区) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_city']">
+            {{this.showData["present_city"]}}
+          </td>
+          <th data-toggle="tooltip" data-placement="top" title="居住地-县(区)">居住地-县(区) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_district']">
+            {{this.showData["present_district"]}}
+          </td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="居住地-乡(镇、街道)">居住地-乡(镇、街道) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_street']">
+            {{this.showData["present_street"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="居住地-居委">居住地-居委 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_comm']">
+            {{this.showData["present_comm"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="居住地-村(路、街)">居住地-村(路、街) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_village']">
+            {{this.showData["present_village"]}}</td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="居住地-弄(路号、弄号)">居住地-弄(路号、弄号) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_buildno']">
+            {{this.showData["present_buildno"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="居住地-楼号(楼号、座、别墅号)">居住地-楼号(楼号、座、别墅号) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_unit']">
+            {{this.showData["present_unit"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="居住地-门牌号(包括'室')">居住地-门牌号(包括'室') </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_roomno']">
+            {{this.showData["present_roomno"]}}</td>
+        </tr>
+        <tr class="single_tr">
+          <th data-toggle="tooltip" data-placement="top" title="居住地址">居住地址 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['present_address']" colspan="5" scope="col">
+            {{this.showData["present_address"]}}</td>
+        </tr>
+      </table>
+      <div class="rows_header">户籍地址信息</div>
+      <table rules="none">
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-省(自治区、直辖市)">户籍地-省(自治区、直辖市) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_province']">
+            {{this.showData["rpr_province"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-市(地区)">户籍地-市(地区) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_city']">{{this.showData["rpr_city"]}}
+          </td>
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-县(区)">户籍地-县(区) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_district']">
+            {{this.showData["rpr_district"]}}
+          </td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-乡(镇、街道)">户籍地-乡(镇、街道) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_street']">
+            {{this.showData["rpr_street"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-居委">户籍地-居委 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_comm']">{{this.showData["rpr_comm"]}}
+          </td>
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-村(路、街)">户籍地-村(路、街) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_village']">
+            {{this.showData["rpr_village"]}}</td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-弄(路号、弄号)">户籍地-弄(路号、弄号) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_buildno']">
+            {{this.showData["rpr_buildno"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-楼号(楼号、座、别墅号)">户籍地-楼号(楼号、座、别墅号) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_unit']">
+            {{this.showData["rpr_unit"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="户籍地-门牌号(包括'室')">户籍地-门牌号(包括'室') </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_roomno']">
+            {{this.showData["rpr_roomno"]}}</td>
+        </tr>
+        <tr class="single_tr">
+          <th data-toggle="tooltip" data-placement="top" title="户籍地址">户籍地址 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_address']" colspan="5" scope="col">
+            {{this.showData["rpr_address"]}}</td>
+        </tr>
+      </table>
+
     </el-dialog>
   </div>
 </template>
@@ -78,7 +201,8 @@
 
         list: [],
 
-        showData: []
+        // showData: [],
+        showData: {}
       }
     },
     created() {
@@ -110,10 +234,9 @@
 
       // 获取主数据详情数据
       getMasterDataInfo(val) {
-        debugger
         getMasterPersonInfos({
-          idcard: val.idcard
-          // idcard: val.id
+          //  idcard: val.idcard,
+          idcard: val.id
         }).then(res => {
           if (res.code === 200) {
             this.list = res.data;
@@ -124,8 +247,15 @@
       // 处理数据，打开弹窗
       openInfos() {
         let vm = this;
-        vm.showData = [...vm.list];
-        vm.showData = _.chunk(vm.showData, 5);
+        // vm.showData = [...vm.list];
+        // vm.showData = _.chunk(vm.showData, 5);
+        vm.list.map(item => {
+          if (item.value) {
+            vm.showData[item.columnName] = item.value
+          } else {
+            vm.showData[item.columnName] = "-"
+          }
+        })
         vm.infoFlag = true;
       },
       // 分页切换
@@ -160,7 +290,6 @@
 
       .searchInput {
         width: 60%;
-        heigth: 100%;
         position: relative;
 
         /deep/ .el-input__inner {
@@ -309,6 +438,7 @@
     }
 
     .masterData_info {
+
       /deep/ .el-dialog {
         opacity: 1;
         width: 88%;
@@ -326,118 +456,100 @@
       /deep/ .el-dialog__headerbtn {
         font-size: 2rem;
       }
+
     }
+
+    /deep/ .el-dialog__wrapper {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+
 
     .masterData_info /deep/ .el-dialog__body {
       width: 100%;
       height: 100%;
+      padding: 1rem 1.25rem;
+
       /*padding: 5.6% 0.2% 5.6% 0.2%;*/
+      .rows_header {
+        background: url('../../assets/tiao.png');
+        background-size: 100% 100%;
+        color: #04FCFF;
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        font-weight: bold;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        flex-grow: 1;
+        border-left: 1px solid #0C3596;
+        border-right: 1px solid #0C3596;
+      }
 
       table {
         width: 100%;
-        // height: 100%;
-        border: none;
         overflow: hidden;
         table-layout: fixed;
+        border-collapse: collapse;
+        border: 1px solid #0C3596;
 
-        tr {
+
+        th {
+          // font-weight: bold;
+          color: #04FCFF;
+          // padding-left: 0.6%;
+          padding-right: 1rem;
+          width: 18%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: right;
+          background: url('../../assets/table_header.png');
+          background-size: 100% 100%;
+          border-right: 1px solid #0C3596;
+        }
+
+        .single_tr {
           font-size: 1.125rem;
-
-          th {
-            font-weight: bold;
-            color: #04FCFF;
-            padding-left: 0.6%;
-            width: 12%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-align: right;
-          }
+          width: 100%;
+          border-bottom: 1px solid #0C3596;
 
           td {
-            height: 3.125rem;
-            font-weight: 500;
+            height: 2.75rem;
+            // font-weight: 500;
             color: #FFFFFF;
-            width: 8%;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 82%;
+            text-overflow: ellipsis;
+            padding-left: 10px;
+          }
+        }
+
+        .thisection_tr {
+          font-size: 1.125rem;
+          width: 100%;
+          border-bottom: 1px solid #0C3596;
+
+          td {
+            height: 2.75rem;
+            // font-weight: 500;
+            color: #FFFFFF;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            padding-left: 10px;
           }
+
         }
 
-        .single {
+        .table_head_style {
           background: url('../../assets/tiao.png');
           background-size: 100% 100%;
+          display: flex;
+          align-items: center;
         }
-
-        .double {}
-      }
-    }
-
-    // 法人
-    .masterDataFa_info {
-      /deep/ .el-dialog {
-        opacity: 1;
-        width: 80%;
-        height: 73.44%;
-        background: url('../../assets/info3Back.png');
-        background-size: 100% 100%;
-      }
-
-      /deep/ .el-dialog__title {
-        color: #ffffff;
-        font-size: 2rem;
-        font-weight: bolder;
-      }
-
-      /deep/ .el-dialog__body {
-        width: 100%;
-        height: 100%;
-        /*padding: 5.6% 0.2% 5.6% 0.2%;*/
-
-        table {
-          width: 100%;
-          /*height: 100%;*/
-          border: none;
-          overflow: hidden;
-          table-layout: fixed;
-
-          tr {
-            font-size: 1.125rem;
-
-            th {
-              font-weight: bold;
-              color: #04FCFF;
-              padding-left: 0.6%;
-              width: 19%;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              text-align: right;
-            }
-
-            td {
-              height: 3.125rem;
-              font-weight: 500;
-              color: #FFFFFF;
-              width: 13.5%;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-            }
-          }
-
-          .single {
-            background: url('../../assets/tiao.png');
-            background-size: 100% 100%;
-          }
-
-          .double {}
-        }
-      }
-
-      /deep/ .el-dialog__headerbtn {
-        font-size: 2rem;
       }
     }
   }
