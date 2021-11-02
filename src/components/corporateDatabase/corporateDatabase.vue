@@ -52,13 +52,13 @@
           </template>
         </tr>
       </table> -->
-      <table rules="none" align="left">
+      <table>
         <tr class="single_tr">
           <th data-toggle="tooltip" data-placement="top" title="公司全称">公司全称 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['ent_name']" colspan="5" scope="col">
             {{this.showData["ent_name"]}}</td>
         </tr>
-        <tr class="thisection_tr" align="left">
+        <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="社会统一信用代码">社会统一信用代码 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['uni_scid']">
             {{this.showData["uni_scid"]}}</td>
@@ -69,7 +69,7 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['est_date']">{{this.showData["est_date"]}}
           </td>
         </tr>
-        <tr class="thisection_tr" align="left">
+        <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="注册法人">注册法人 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['legal_represent']">
             {{this.showData["legal_represent"]}}</td>
@@ -80,7 +80,7 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['tel_real']">
             {{this.showData["tel_real"]}}</td>
         </tr>
-        <tr class="thisection_tr" align="left">
+        <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="企业类型">企业类型 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['ent_type']">
             {{this.showData["ent_type"]}}</td>
@@ -91,7 +91,7 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['staff_number']">
             {{this.showData["staff_number"]}}</td>
         </tr>
-        <tr class="thisection_tr" align="left">
+        <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="失信类型">失信类型 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['ent_state']">
             {{this.showData["ent_state"]}}</td>
@@ -102,7 +102,7 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['ent_dept']">
             {{this.showData["ent_dept"]}}</td>
         </tr>
-        <tr class="thisection_tr" align="left">
+        <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="惩戒联动部门">惩戒联动部门 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['ent_dept_other']">
             {{this.showData["ent_dept_other"]}}</td>
@@ -113,7 +113,7 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['ent_dept_pa']">
             {{this.showData["ent_dept_pa"]}}</td>
         </tr>
-        <tr class="thisection_tr" align="left">
+        <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="所属辖区">所属辖区 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['reg_address_code']">
             {{this.showData["reg_address_code"]}}</td>
@@ -125,14 +125,15 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['business_detail']">
             {{this.showData["business_detail"]}}</td>
         </tr>
-        <tr class="single_tr" align="left">
+        <tr class="single_tr">
           <th data-toggle="tooltip" data-placement="top" title="企业地址">企业地址 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['reg_address']" colspan="5" scope="col">
             {{this.showData["reg_address"]}}</td>
         </tr>
-        <tr class="single_tr" align="left">
-          <th data-toggle="tooltip" data-placement="top" title="经营范围(详情)">经营范围(详情) </th>
-          <td data-toggle="tooltip" data-placement="top" :title="showData['business']" colspan="5" scope="col">
+        <tr class="single_tr_rows">
+          <th data-toggle="tooltip" data-placement="top" title="经营范围(详情)" rowspan="2">经营范围(详情) </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['business']" colspan="5" rowspan="2"
+            scope="col">
             {{this.showData["business"]}}</td>
         </tr>
       </table>
@@ -420,10 +421,14 @@
         font-weight: bolder;
       }
 
+      /deep/.el-dialog__header {
+        padding: 30px 20px 10px;
+      }
+
       /deep/ .el-dialog__body {
         width: 100%;
         height: 100%;
-        padding: 1rem 1.25rem;
+        padding: 0.5rem 1.25rem;
         /*padding: 5.6% 0.2% 5.6% 0.2%;*/
 
         table {
@@ -459,9 +464,29 @@
               color: #FFFFFF;
               white-space: nowrap;
               overflow: hidden;
-              width: 82%;
+              width: 84%;
               text-overflow: ellipsis;
               padding-left: 10px;
+            }
+          }
+
+          .single_tr_rows {
+            font-size: 1.125rem;
+            height: 5.5rem;
+            max-height: 5.5rem;
+            border-bottom: 1px solid #0C3596;
+
+            td {
+              color: #FFFFFF;
+              word-wrap: break-word;
+              word-break: break-all;
+              white-space: wrap;
+              overflow: hidden;
+              width: 84%;
+              text-overflow: ellipsis;
+              padding-left: 10px;
+              line-height: 2.75rem;
+              max-height: 5.5rem
             }
           }
 

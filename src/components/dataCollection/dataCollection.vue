@@ -192,7 +192,7 @@
     </el-dialog>
     <el-dialog :visible.sync="loginFlag" width="35%" top="10%" class="loginForm" :close-on-click-modal="false"
       :close-on-press-escape="false" :show-close="false" :modal-append-to-body="true">
-      <div style="margin-top: 5%">
+      <div style="margin-top: 5%;display:flex;justify-content:center">
         <!--用&nbsp;户&nbsp;登&nbsp;录-->
         <span class="login_title">金牛区基础数据库平台</span>
       </div>
@@ -1912,7 +1912,7 @@
         font-family: AlibabaPuHuiTi;
         font-weight: bold;
         color: #FFFFFF;
-        margin-left: 25%;
+        // margin-left: 25%;
       }
     }
 

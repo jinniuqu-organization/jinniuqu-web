@@ -453,6 +453,10 @@
         font-weight: bolder;
       }
 
+      /deep/.el-dialog__header {
+        padding: 30px 20px 10px;
+      }
+
       /deep/ .el-dialog__headerbtn {
         font-size: 2rem;
       }
@@ -468,7 +472,7 @@
     .masterData_info /deep/ .el-dialog__body {
       width: 100%;
       height: 100%;
-      padding: 1rem 1.25rem;
+      padding: 0.5rem 1.25rem;
 
       /*padding: 5.6% 0.2% 5.6% 0.2%;*/
       .rows_header {
