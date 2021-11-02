@@ -449,7 +449,7 @@
 
       /deep/ .el-dialog__title {
         color: #ffffff;
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-weight: bolder;
       }
 

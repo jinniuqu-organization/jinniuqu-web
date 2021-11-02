@@ -83,8 +83,8 @@
         <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="市场主体活力类型(个体户、企业、农民专业合作社)">
             市场主体活力类型(个体户、企业、农民专业合作社)</th>
-          <td data-toggle="tooltip" data-placement="top" :title="showData['business_detail']">
-            {{this.showData["business_detail"]}}</td>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['ent_type']">
+            {{this.showData["ent_type"]}}</td>
           <th data-toggle="tooltip" data-placement="top" title="经营或业务范围">经营或业务范围</th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['business_scope']">
             {{this.showData["business_scope"]}}</td>
@@ -122,8 +122,8 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['reg_institute']">
             {{this.showData["reg_institute"]}}</td>
           <th data-toggle="tooltip" data-placement="top" title="企业类型">企业类型 </th>
-          <td data-toggle="tooltip" data-placement="top" :title="showData['ent_type']">
-            {{this.showData["ent_type"]}}</td>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['business_detail']">
+            {{this.showData["business_detail"]}}</td>
 
         </tr>
         <tr class="single_tr">
@@ -418,7 +418,7 @@
 
       /deep/ .el-dialog__title {
         color: #ffffff;
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-weight: bolder;
       }
 
