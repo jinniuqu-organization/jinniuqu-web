@@ -12,8 +12,8 @@ module.exports = {
         proxyTable: {
             "/api": {
                 // target: 'http://192.168.70.83:8082',
-                target: "http://t244q08520.zicp.vip", //远程访问地址
-                // target: 'http://localhost:8082',
+                //target: "http://t244q08520.zicp.vip", //远程访问地址
+                target: 'http://localhost:8082',
                 //target: "http://172.38.110.241:8085",
                 changeOrigin: true,
                 pathRewrite: {

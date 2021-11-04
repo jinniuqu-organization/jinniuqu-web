@@ -85,14 +85,14 @@
         >
         </el-table-column>
         <el-table-column
-          prop="xCoordinate"
+          prop="xcoordinate"
           label="经度"
           align="left"
           show-overflow-tooltip
           >
         </el-table-column>
         <el-table-column
-          prop="yCoordinate"
+          prop="ycoordinate"
           label="纬度"
           align="left"
           show-overflow-tooltip
@@ -113,6 +113,15 @@
           </template>
         </el-table-column>
       </el-table>
+    </div>
+    <div class="pageUtil">
+      <el-pagination
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-size="pageSize"
+        layout="total, prev, pager, next, jumper"
+        :total="total">
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -191,12 +200,14 @@
       getMasterInfos() {
         let query = {
           id : this.selectType,
-          name:this.masterData
+          name:this.masterData,
+          pageNum:this.currentPage
         };
         getMasterGeographicInfos(query).then(res => {
           if (res.code === 200) {
             this.masterTableData = res.data.list;
             this.masterTableSelectName = this.loadAll();
+            this.total = res.data.total;
           } else {
             this.total = 0;
             this.masterTableData = [];
