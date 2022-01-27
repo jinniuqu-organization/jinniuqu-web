@@ -11,7 +11,7 @@
     </div>
     <div class="masterDataTable">
       <el-table :data="masterTableData" :highlight-current-row="true" @row-click="getMasterDataInfo" ref="masterTable"
-        style="width: 100%">
+                style="width: 100%">
         <el-table-column type="index" label="序号" :index="table_index" align="center" width="100">
         </el-table-column>
         <!-- 根据环境不一样切换为idcard 或 idcard -->
@@ -33,7 +33,7 @@
     </div>
     <div class="pageUtil">
       <el-pagination @current-change="handleCurrentChange" :current-page="currentPage" :page-size="pageSize"
-        layout="total, prev, pager, next, jumper" :total="total">
+                     layout="total, prev, pager, next, jumper" :total="total">
       </el-pagination>
     </div>
 
@@ -49,7 +49,7 @@
       </table>
     </el-dialog> -->
     <el-dialog :visible.sync="infoFlag" top="4.3%" show-close class="masterData_info" title="用户详细信息"
-      :close-on-click-modal="true">
+               :close-on-click-modal="true">
       <div class="rows_header" align="center">基础信息 </div>
       <table rules="none">
         <tr class="single_tr">
@@ -75,7 +75,20 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['marriage_type']">
             {{this.showData["marriage_type"]}}</td>
           <th data-toggle="tooltip" data-placement="top" title="户籍类型">户籍类型 </th>
-          <td data-toggle="tooltip" data-placement="top" :title="showData['domicile']">{{this.showData["domicile"]}}
+          <td data-toggle="tooltip" data-placement="top" :title="showData['domicile']">
+            {{this.showData["domicile"]}}
+          </td>
+        </tr>
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="人口状况">人口状况 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['peo_state']">
+            {{this.showData["peo_state"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="人口标签">人口标签 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['peo_label']">
+            {{this.showData["peo_label"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="是否接种新冠疫苗">是否接种新冠疫苗 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['ifHaveVaccine']">
+            {{this.showData["ifHaveVaccine"]}}
           </td>
         </tr>
         <tr class="thisection_tr">
