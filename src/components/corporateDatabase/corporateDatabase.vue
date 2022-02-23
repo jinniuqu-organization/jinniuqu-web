@@ -131,6 +131,16 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['reg_address']" colspan="5" scope="col">
             {{this.showData["reg_address"]}}</td>
         </tr>
+        <tr class="single_tr">
+          <th data-toggle="tooltip" data-placement="top" title="居住地址">居住地址 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['peo_address']" colspan="5" scope="col">
+            {{this.showData["peo_address"]}}</td>
+        </tr>
+        <tr class="single_tr">
+          <th data-toggle="tooltip" data-placement="top" title="户籍地址">户籍地址 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['census_address']" colspan="5" scope="col">
+            {{this.showData["census_address"]}}</td>
+        </tr>
         <tr class="single_tr_rows">
           <th data-toggle="tooltip" data-placement="top" title="经营范围(详情)" rowspan="2">经营范围(详情) </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['business']" colspan="5" rowspan="2"

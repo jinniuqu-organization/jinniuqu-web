@@ -86,9 +86,9 @@
           <th data-toggle="tooltip" data-placement="top" title="人口标签">人口标签 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['peo_label']">
             {{this.showData["peo_label"]}}</td>
-          <th data-toggle="tooltip" data-placement="top" title="是否接种新冠疫苗">是否接种新冠疫苗 </th>
-          <td data-toggle="tooltip" data-placement="top" :title="showData['ifHaveVaccine']">
-            {{this.showData["ifHaveVaccine"]}}
+          <th data-toggle="tooltip" data-placement="top" title="亲属关系">亲属人员 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['peo_relatives']">
+            {{this.showData["peo_relatives"]}}
           </td>
         </tr>
         <tr class="thisection_tr">
@@ -123,7 +123,7 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['present_village']">
             {{this.showData["present_village"]}}</td>
         </tr>
-        <tr class="thisection_tr">
+        <!--<tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="居住地-弄(路号、弄号)">居住地-弄(路号、弄号) </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['present_buildno']">
             {{this.showData["present_buildno"]}}</td>
@@ -133,7 +133,7 @@
           <th data-toggle="tooltip" data-placement="top" title="居住地-门牌号(包括'室')">居住地-门牌号(包括'室') </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['present_roomno']">
             {{this.showData["present_roomno"]}}</td>
-        </tr>
+        </tr>-->
         <tr class="single_tr">
           <th data-toggle="tooltip" data-placement="top" title="居住地址">居住地址 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['present_address']" colspan="5" scope="col">
@@ -165,7 +165,7 @@
           <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_village']">
             {{this.showData["rpr_village"]}}</td>
         </tr>
-        <tr class="thisection_tr">
+        <!--<tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="户籍地-弄(路号、弄号)">户籍地-弄(路号、弄号) </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_buildno']">
             {{this.showData["rpr_buildno"]}}</td>
@@ -175,11 +175,27 @@
           <th data-toggle="tooltip" data-placement="top" title="户籍地-门牌号(包括'室')">户籍地-门牌号(包括'室') </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_roomno']">
             {{this.showData["rpr_roomno"]}}</td>
-        </tr>
+        </tr>-->
         <tr class="single_tr">
           <th data-toggle="tooltip" data-placement="top" title="户籍地址">户籍地址 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['rpr_address']" colspan="5" scope="col">
             {{this.showData["rpr_address"]}}</td>
+        </tr>
+      </table>
+      <div class="rows_header">公司信息</div>
+      <table rules="none">
+        <tr class="thisection_tr">
+          <th data-toggle="tooltip" data-placement="top" title="是否法人">是否法人 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['legalperson_yes']">
+            {{this.showData["legalperson_yes"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="单位名称">单位名称 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['legalperson_name']">
+            {{this.showData["legalperson_name"]}}
+          </td>
+          <th data-toggle="tooltip" data-placement="top" title="单位地址">单位地址 </th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['legalperson_addr']">
+            {{this.showData["legalperson_addr"]}}
+          </td>
         </tr>
       </table>
 
@@ -559,6 +575,33 @@
             padding-left: 10px;
           }
 
+        }
+
+        .mask {
+          background-color: #000;
+          opacity: 0.3;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1
+        }
+        .pop {
+          background-color: #fff;
+
+          position: fixed;
+          top: 100px;
+          left: 300px;
+          width: calc(100% - 600px);
+          height:calc(100% - 200px);
+          z-index: 2
+        }
+        .btn {
+          background-color: #fff;
+          border-radius: 4px;
+          border: 1px solid blue;
+          padding: 4px 12px;
         }
 
         .table_head_style {
