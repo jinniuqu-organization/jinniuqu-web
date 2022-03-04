@@ -5,6 +5,7 @@
         <el-select v-model="selectType" slot="prepend" placeholder="请选择" :popper-append-to-body="false">
           <el-option label="身份证号" value="1"></el-option>
           <el-option label="姓名" value="2"></el-option>
+          <el-option label="街道" value="3"></el-option>
         </el-select>
         <el-button slot="append" icon="el-icon-search" @click="getMasterInfos"></el-button>
       </el-input>

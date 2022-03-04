@@ -8,6 +8,7 @@
           <el-option label="法定代表人" value="3"></el-option>
           <el-option label="注册资金" value="4"></el-option>
           <el-option label="机构类型" value="5"></el-option>
+          <el-option label="所属市管所" value="6"></el-option>
         </el-select>
         <el-button slot="append" icon="el-icon-search" @click="getMasterInfos"></el-button>
       </el-input>
@@ -110,9 +111,9 @@
           <th data-toggle="tooltip" data-placement="top" title="惩戒时间">惩戒时间</th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['ent_dept_date']">
             {{this.showData["ent_dept_date"]}}</td>
-          <th data-toggle="tooltip" data-placement="top" title="惩戒措施">惩戒措施</th>
-          <td data-toggle="tooltip" data-placement="top" :title="showData['ent_dept_pa']">
-            {{this.showData["ent_dept_pa"]}}</td>
+          <th data-toggle="tooltip" data-placement="top" title="惩戒措施">企业迁入/迁出</th>
+          <td data-toggle="tooltip" data-placement="top" :title="showData['ent_move']">
+            {{this.showData["ent_move"]}}</td>
         </tr>
         <tr class="thisection_tr">
           <th data-toggle="tooltip" data-placement="top" title="所属辖区">所属辖区 </th>
@@ -132,12 +133,12 @@
             {{this.showData["reg_address"]}}</td>
         </tr>
         <tr class="single_tr">
-          <th data-toggle="tooltip" data-placement="top" title="居住地址">居住地址 </th>
+          <th data-toggle="tooltip" data-placement="top" title="法人居住地址">法人居住地址 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['peo_address']" colspan="5" scope="col">
             {{this.showData["peo_address"]}}</td>
         </tr>
         <tr class="single_tr">
-          <th data-toggle="tooltip" data-placement="top" title="户籍地址">户籍地址 </th>
+          <th data-toggle="tooltip" data-placement="top" title="法人户籍地址">法人户籍地址 </th>
           <td data-toggle="tooltip" data-placement="top" :title="showData['census_address']" colspan="5" scope="col">
             {{this.showData["census_address"]}}</td>
         </tr>
